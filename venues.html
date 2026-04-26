@@ -8,7 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* ===== GLOBAL RESET ===== */
         * {
             margin: 0;
             padding: 0;
@@ -198,7 +197,7 @@
             color: #6b4e38;
         }
 
-        /* VENUE CARDS (Our Presence Grid) */
+        /* Venue Cards */
         .venue-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -257,13 +256,14 @@
             cursor: pointer;
             transition: 0.2s;
             font-size: 0.85rem;
+            margin-top: 8px;
         }
         .btn-venue:hover {
             background: #a55d35;
             color: white;
         }
 
-        /* MODAL STYLES */
+        /* Modal Styles */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -388,7 +388,7 @@
             .modal-title { font-size: 1.6rem; }
         }
 
-        /* other existing sections */
+        /* Other sections */
         .grid-3 {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -453,7 +453,6 @@
 </nav>
 
 <main>
-    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container">
             <div class="tagline">TIMELESS AFFAIRS</div>
@@ -463,16 +462,14 @@
         </div>
     </section>
 
-    <!-- ========= OUR PRESENCE: CLICKABLE VENUES (Konkan & Goa) ========= -->
     <section id="presence">
         <div class="container">
             <h2 class="section-title">Our Presence <span class="highlight">✦ Konkan & Goa</span></h2>
-            <p class="section-sub">Serving Konkan's most scenic destinations & Goa — each venue handpicked for its grandeur & romance. Click to discover photo galleries, authentic Google Map locations, and exclusive details.</p>
+            <p class="section-sub">Serving Konkan's most scenic destinations & Goa — each venue handpicked for its grandeur & romance.</p>
             <div class="venue-grid" id="venueGridContainer"></div>
         </div>
     </section>
 
-    <!-- Expertise Section -->
     <section id="services">
         <div class="container">
             <h2 class="section-title">Wedding Artistry</h2>
@@ -484,14 +481,12 @@
         </div>
     </section>
 
-    <!-- Connect Section -->
     <section id="contact">
         <div class="container">
             <div class="contact-row">
                 <h3 style="font-size: 1.8rem; margin-bottom: 12px;">Start your journey</h3>
                 <p style="margin-bottom: 20px;">Let’s design your dream celebration in one of our iconic venues</p>
-                <a href="#" class="btn-outline" style="background: white; color:#2c2418; border:none; padding:12px 36px;">✉ hello@weddingkalakar.com</a>
-            </div>
+               <a href="index.html" class="btn-outline" style="background: white; color:#2c2418; border:none; padding:12px 36px;"><i class="fab fa-instagram"></i> @WeddingKalakar</a>           </div>
         </div>
     </section>
 </main>
@@ -503,222 +498,211 @@
     </div>
 </footer>
 
-<!-- MODAL STRUCTURE (dynamic content) -->
+<!-- Modal Structure -->
 <div id="venueModal" class="modal-overlay">
     <div class="modal-container">
         <div class="modal-close" id="closeModalBtn"><i class="fas fa-times"></i></div>
-        <div id="modalDynamicContent">
-            <!-- filled via JS -->
-        </div>
+        <div id="modalDynamicContent"></div>
     </div>
 </div>
 
 <script>
-    // ========= VENUES DATA (Konkan & Goa Locations) =========
-    // Each venue includes: name, city/region, shortDesc, mainImage, galleryImages, mapQuery, highlight features
+    // ========= VENUES DATA WITH LOCAL IMAGE PATHS (multiple images per city) =========
+    // Each venue has:
+    // - name, city, shortDesc, mapQuery, features
+    // - images: array of paths like "images/cityname/1.jpg", "images/cityname/2.jpg", etc.
+    // - mainImage: first image used as card thumbnail
     const venuesData = [
         {
-            id: 1,
             name: "Kankawli",
             city: "Sindhudurg, Maharashtra",
             shortDesc: "A serene town known for its lush greenery, tranquil backwaters, and pristine beaches — perfect for intimate coastal weddings.",
-            mainImage: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-            gallery: [
-                "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                "https://images.unsplash.com/photo-1506953829328-11c7f69f1e0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                "https://images.unsplash.com/photo-1519046904884-53103b34b206?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-            ],
             mapQuery: "Kankavli+Sindhudurg+Maharashtra",
-            features: ["Scenic Backwaters", "Beachside Venues", "Mountain Views", "Authentic Malvani Cuisine"]
+            features: ["Scenic Backwaters", "Beachside Venues", "Mountain Views", "Authentic Malvani Cuisine"],
+            images: [
+                "images/kankawli/1.jpg",
+                "images/kankawli/2.jpg",
+                "images/kankawli/3.jpg",
+                "images/kankawli/4.jpg"
+            ]
         },
         {
-            id: 2,
             name: "Kudal",
             city: "Sindhudurg, Maharashtra",
             shortDesc: "Famous for its Alphonso mangoes and cultural richness, Kudal offers heritage estates and riverside venues.",
-            mainImage: "https://images.unsplash.com/photo-1590523741831-ab7e2b8f3fec?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-            gallery: [
-                "https://images.unsplash.com/photo-1590523741831-ab7e2b8f3fec?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                "https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-            ],
             mapQuery: "Kudal+Sindhudurg+Maharashtra",
-            features: ["Heritage Estates", "Mango Orchards", "Riverside Venues", "Cultural Richness"]
+            features: ["Heritage Estates", "Mango Orchards", "Riverside Venues", "Cultural Richness"],
+            images: [
+                "images/kudal/1.jpg",
+                "images/kudal/2.jpg",
+                "images/kudal/3.jpg",
+                "images/kudal/4.jpg"
+            ]
         },
         {
-            id: 3,
             name: "Vengurla",
             city: "Sindhudurg, Maharashtra",
             shortDesc: "Known for its pristine white sand beaches and historic lighthouse, Vengurla is a hidden gem for beach weddings.",
-            mainImage: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-            gallery: [
-                "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                "https://images.unsplash.com/photo-1506953829328-11c7f69f1e0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                "https://images.unsplash.com/photo-1519046904884-53103b34b206?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-            ],
             mapQuery: "Vengurla+Maharashtra",
-            features: ["White Sand Beaches", "Historic Lighthouse", "Secluded Coves", "Water Sports"]
+            features: ["White Sand Beaches", "Historic Lighthouse", "Secluded Coves", "Water Sports"],
+            images: [
+                "images/vengurla/1.jpg",
+                "images/vengurla/2.jpg",
+                "images/vengurla/3.jpg",
+                "images/vengurla/4.jpg"
+            ]
         },
         {
-            id: 4,
             name: "Malvan",
             city: "Sindhudurg, Maharashtra",
             shortDesc: "Home to the historic Sindhudurg Fort, Malvan offers a blend of culture, adventure, and stunning beachfront resorts.",
-            mainImage: "https://images.unsplash.com/photo-1519046904884-53103b34b206?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-            gallery: [
-                "https://images.unsplash.com/photo-1519046904884-53103b34b206?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                "https://images.unsplash.com/photo-1506953829328-11c7f69f1e0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-            ],
             mapQuery: "Malvan+Maharashtra",
-            features: ["Sindhudurg Fort", "Water Sports", "Beachfront Resorts", "Malvani Seafood"]
+            features: ["Sindhudurg Fort", "Water Sports", "Beachfront Resorts", "Malvani Seafood"],
+            images: [
+                "images/malvan/1.jpg",
+                "images/malvan/2.jpg",
+                "images/malvan/3.jpg",
+                "images/malvan/4.jpg"
+            ]
         },
         {
-            id: 5,
             name: "Bhogva",
             city: "Near Vengurla, Maharashtra",
             shortDesc: "A tranquil coastal village with silver sand beaches and crystal-clear waters — ideal for intimate, barefoot ceremonies.",
-            mainImage: "https://images.unsplash.com/photo-1506953829328-11c7f69f1e0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-            gallery: [
-                "https://images.unsplash.com/photo-1506953829328-11c7f69f1e0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                "https://images.unsplash.com/photo-1519046904884-53103b34b206?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-            ],
             mapQuery: "Bhogwe+Beach+Vengurla",
-            features: ["Silver Sand Beach", "Backwater Lagoon", "Cliff-top Views", "Intimate Setting"]
+            features: ["Silver Sand Beach", "Backwater Lagoon", "Cliff-top Views", "Intimate Setting"],
+            images: [
+                "images/bhogva/1.jpg",
+                "images/bhogva/2.jpg",
+                "images/bhogva/3.jpg",
+                "images/bhogva/4.jpg"
+            ]
         },
         {
-            id: 6,
             name: "Devbag",
             city: "Malvan, Maharashtra",
             shortDesc: "Located at the confluence of the Karli River and the Arabian Sea, Devbag offers stunning sunset views and water sports.",
-            mainImage: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-            gallery: [
-                "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                "https://images.unsplash.com/photo-1506953829328-11c7f69f1e0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                "https://images.unsplash.com/photo-1519046904884-53103b34b206?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-            ],
             mapQuery: "Devbag+Malvan+Maharashtra",
-            features: ["River Confluence", "Sunset Views", "Water Sports", "Beachfront Resorts"]
+            features: ["River Confluence", "Sunset Views", "Water Sports", "Beachfront Resorts"],
+            images: [
+                "images/devbag/1.jpg",
+                "images/devbag/2.jpg",
+                "images/devbag/3.jpg",
+                "images/devbag/4.jpg"
+            ]
         },
         {
-            id: 7,
             name: "Devgad",
             city: "Sindhudurg, Maharashtra",
             shortDesc: "Famous for its Alphonso mangoes and pristine beaches, Devgad offers tranquil coastal venues surrounded by orchards.",
-            mainImage: "https://images.unsplash.com/photo-1590523741831-ab7e2b8f3fec?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-            gallery: [
-                "https://images.unsplash.com/photo-1590523741831-ab7e2b8f3fec?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                "https://images.unsplash.com/photo-1506953829328-11c7f69f1e0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                "https://images.unsplash.com/photo-1519046904884-53103b34b206?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-            ],
             mapQuery: "Devgad+Sindhudurg+Maharashtra",
-            features: ["Mango Orchards", "Pristine Beaches", "Coastal Tranquility", "Temple Visits"]
+            features: ["Mango Orchards", "Pristine Beaches", "Coastal Tranquility", "Temple Visits"],
+            images: [
+                "images/devgad/1.jpg",
+                "images/devgad/2.jpg",
+                "images/devgad/3.jpg",
+                "images/devgad/4.jpg"
+            ]
         },
         {
-            id: 8,
             name: "Tarkarli",
             city: "Malvan, Maharashtra",
             shortDesc: "Renowned for its white sand beach and crystal-clear waters, Tarkarli is a top choice for water sports and beach weddings.",
-            mainImage: "https://images.unsplash.com/photo-1519046904884-53103b34b206?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-            gallery: [
-                "https://images.unsplash.com/photo-1519046904884-53103b34b206?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                "https://images.unsplash.com/photo-1506953829328-11c7f69f1e0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-            ],
             mapQuery: "Tarkarli+Malvan+Maharashtra",
-            features: ["White Sand Beach", "Scuba Diving", "Water Sports", "Houseboat Stays"]
+            features: ["White Sand Beach", "Scuba Diving", "Water Sports", "Houseboat Stays"],
+            images: [
+                "images/tarkarli/1.jpg",
+                "images/tarkarli/2.jpg",
+                "images/tarkarli/3.jpg",
+                "images/tarkarli/4.jpg"
+            ]
         },
         {
-            id: 9,
             name: "Hidden Gems of Konkan",
             city: "Various Locations",
             shortDesc: "Discover untouched beaches, secret waterfalls, and private coves — perfect for exclusive, offbeat destination weddings.",
-            mainImage: "https://images.unsplash.com/photo-1506953829328-11c7f69f1e0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-            gallery: [
-                "https://images.unsplash.com/photo-1506953829328-11c7f69f1e0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                "https://images.unsplash.com/photo-1519046904884-53103b34b206?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-            ],
             mapQuery: "Konkan+Maharashtra",
-            features: ["Secret Beaches", "Private Coves", "Waterfalls", "Exclusive Experiences"]
+            features: ["Secret Beaches", "Private Coves", "Waterfalls", "Exclusive Experiences"],
+            images: [
+                "images/hidden_gems_konkan/1.jpg",
+                "images/hidden_gems_konkan/2.jpg",
+                "images/hidden_gems_konkan/3.jpg",
+                "images/hidden_gems_konkan/4.jpg"
+            ]
         },
         {
-            id: 10,
             name: "Premium Goa",
             city: "Goa",
             shortDesc: "World-class beachfront resorts, vibrant nightlife, and Portuguese heritage — Goa remains the ultimate wedding destination.",
-            mainImage: "https://images.unsplash.com/photo-1519046904884-53103b34b206?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-            gallery: [
-                "https://images.unsplash.com/photo-1519046904884-53103b34b206?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                "https://images.unsplash.com/photo-1506953829328-11c7f69f1e0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-            ],
             mapQuery: "Goa",
-            features: ["Beachfront Resorts", "Luxury Villas", "Portuguese Heritage", "Vibrant Nightlife"]
+            features: ["Beachfront Resorts", "Luxury Villas", "Portuguese Heritage", "Vibrant Nightlife"],
+            images: [
+                "images/premium_goa/1.jpg",
+                "images/premium_goa/2.jpg",
+                "images/premium_goa/3.jpg",
+                "images/premium_goa/4.jpg"
+            ]
         }
     ];
 
-    // Render venue cards dynamically
+    // Helper to get first valid image (for card thumbnail)
+    function getMainImage(venue) {
+        return venue.images && venue.images.length > 0 ? venue.images[0] : "https://via.placeholder.com/800x600?text=No+Image";
+    }
+
+    // Render venue cards with Explore button
     function renderVenues() {
         const grid = document.getElementById('venueGridContainer');
         if (!grid) return;
         grid.innerHTML = '';
-        venuesData.forEach(venue => {
+        venuesData.forEach((venue, index) => {
             const card = document.createElement('div');
             card.className = 'venue-card';
             card.innerHTML = `
-                <img class="venue-img" src="${venue.mainImage}" alt="${venue.name}" loading="lazy">
+                <img class="venue-img" src="${getMainImage(venue)}" alt="${venue.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/800x600?text=Image+Not+Found'">
                 <div class="venue-card-content">
                     <div class="venue-name">${venue.name}</div>
                     <div class="venue-location"><i class="fas fa-map-marker-alt"></i> ${venue.city}</div>
-                    <div class="venue-desc">${venue.shortDesc.substring(0, 100)}${venue.shortDesc.length > 100 ? '…' : ''}</div>
-                    <button class="btn-venue" data-id="${venue.id}"><i class="fas fa-info-circle"></i> Explore Venue</button>
+                    <div class="venue-desc">${venue.shortDesc}</div>
+                    <button class="btn-venue" data-index="${index}"><i class="fas fa-info-circle"></i> Explore Venue</button>
                 </div>
             `;
             grid.appendChild(card);
         });
 
-        // attach event listeners to all venue buttons
+        // Attach event listeners to all explore buttons
         document.querySelectorAll('.btn-venue').forEach(btn => {
             btn.addEventListener('click', (e) => {
-                const id = parseInt(btn.getAttribute('data-id'));
-                const venue = venuesData.find(v => v.id === id);
+                const idx = parseInt(btn.getAttribute('data-index'));
+                const venue = venuesData[idx];
                 if (venue) openVenueModal(venue);
             });
         });
     }
 
-    // Function to open modal with venue details (Google Map embed + gallery + info)
+    // Open modal with venue details (gallery, map, features)
     function openVenueModal(venue) {
         const modalOverlay = document.getElementById('venueModal');
         const modalContentDiv = document.getElementById('modalDynamicContent');
         if (!modalOverlay || !modalContentDiv) return;
 
-        // Build google maps embed URL
+        // Build Google Maps embed URL
         const mapEmbedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(venue.mapQuery)}&z=12&output=embed`;
-        
-        // generate gallery images html
+
+        // Build gallery HTML from all images
         let galleryHtml = '';
-        venue.gallery.forEach(imgUrl => {
-            galleryHtml += `<img src="${imgUrl}" alt="${venue.name} view" loading="lazy">`;
+        venue.images.forEach(imgUrl => {
+            galleryHtml += `<img src="${imgUrl}" alt="${venue.name} view" loading="lazy" onerror="this.src='https://via.placeholder.com/400x300?text=Image+Missing'">`;
         });
-        
-        // generate feature pills
+
+        // Build features pills
         let featuresHtml = '';
         venue.features.forEach(f => {
             featuresHtml += `<span><i class="fas fa-check-circle"></i> ${f}</span>`;
         });
+
+        // 🔗 Updated "Plan Your Event Here" button - opens contact page in new tab
+        const contactPageUrl = 'https://vedant-9105.github.io/frameandfolktales/contact.html';
 
         const modalHtml = `
             <div style="margin-bottom: 8px;">
@@ -739,24 +723,15 @@
             </div>
             <div style="margin-top: 20px; background:#fef5ed; padding:16px; border-radius: 24px;">
                 <p style="font-weight:500;"><i class="fas fa-quote-left"></i> Experience curated weddings at ${venue.name} — expert decor, catering, and coordination by Wedding Kalakar.</p>
-                <p style="margin-top: 12px;"><a href="#" class="btn-outline" style="font-size:0.8rem; padding:6px 18px;" id="inquiryFake"><i class="fas fa-heart"></i> Plan your event here</a></p>
+                <p style="margin-top: 12px;"><a href="${contactPageUrl}" target="_blank" class="btn-outline" style="font-size:0.8rem; padding:6px 18px;"><i class="fas fa-heart"></i> Plan your event here</a></p>
             </div>
         `;
         modalContentDiv.innerHTML = modalHtml;
         modalOverlay.classList.add('active');
         document.body.style.overflow = 'hidden';
-
-        // Inquiry button demo
-        const fakeInquiry = document.getElementById('inquiryFake');
-        if (fakeInquiry) {
-            fakeInquiry.addEventListener('click', (e) => {
-                e.preventDefault();
-                alert(`✨ Thank you for your interest in ${venue.name}! Our team will reach out with custom packages.`);
-            });
-        }
     }
 
-    // Close modal logic
+    // Close modal
     function closeModal() {
         const modalOverlay = document.getElementById('venueModal');
         if (modalOverlay) {
@@ -765,9 +740,10 @@
         }
     }
 
-    // event listeners for modal close
+    // Event listeners for modal close
     document.addEventListener('DOMContentLoaded', () => {
         renderVenues();
+
         const modalOverlay = document.getElementById('venueModal');
         const closeBtn = document.getElementById('closeModalBtn');
         if (closeBtn) closeBtn.addEventListener('click', closeModal);
@@ -776,7 +752,6 @@
                 if (e.target === modalOverlay) closeModal();
             });
         }
-        // escape key closes modal
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && modalOverlay && modalOverlay.classList.contains('active')) {
                 closeModal();
@@ -784,7 +759,7 @@
         });
     });
 
-    // ========= MOBILE MENU & SMOOTH SCROLL =========
+    // Mobile menu toggle
     const menuBtn = document.getElementById('menuToggle');
     const navLinks = document.getElementById('navLinks');
     if (menuBtn && navLinks) {
@@ -797,7 +772,8 @@
             });
         });
     }
-    // smooth scroll for anchor links
+
+    // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const targetId = this.getAttribute('href');
