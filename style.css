@@ -419,3 +419,22 @@ footer {
         font-size: 1.4rem;
     }
 }
+.btn-explore-venues {
+    display: inline-block;
+    background: #a55d35;
+    color: white;
+    padding: 12px 32px;
+    border-radius: 40px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+    font-size: 1rem;
+    box-shadow: 0 4px 12px rgba(165,93,53,0.2);
+}
+.btn-explore-venues:hover {
+    background: #7e4627;
+    transform: translateY(-2px);
+}
+.btn-explore-venues i {
+    margin-right: 8px;
+}

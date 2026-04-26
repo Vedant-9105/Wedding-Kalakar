@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Wedding Kalakar | Premier Wedding Planners in Konkan & Goa</title>
+    <!-- Google Fonts + Font Awesome 6 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* ===== GLOBAL RESET ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fefaf5;
+            color: #2c2418;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4, .serif-heading {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* header / nav */
+        .navbar {
+            background: #fffcf8;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(2px);
+            border-bottom: 1px solid #f0e4d4;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 24px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo-icon {
+            background: #a55d35;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            box-shadow: 0 6px 12px rgba(165,93,53,0.2);
+        }
+        .logo-text h1 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #a55d35;
+            letter-spacing: 1px;
+            line-height: 1.2;
+        }
+        .logo-text p {
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            color: #8b6b4d;
+            margin-top: -4px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #3e2a22;
+            transition: 0.2s;
+            font-size: 0.95rem;
+        }
+        .nav-links a:hover {
+            color: #b87c4f;
+        }
+        .menu-btn {
+            display: none;
+            font-size: 1.6rem;
+            cursor: pointer;
+            color: #a55d35;
+        }
+        @media (max-width: 880px) {
+            .nav-links {
+                position: fixed;
+                top: 75px;
+                left: -100%;
+                background: #fffcf8;
+                width: 80%;
+                height: calc(100vh - 75px);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 40px 32px;
+                gap: 28px;
+                box-shadow: 5px 0 20px rgba(0,0,0,0.05);
+                transition: 0.3s;
+                border-right: 1px solid #f0e0d0;
+                z-index: 99;
+            }
+            .nav-links.active {
+                left: 0;
+            }
+            .menu-btn {
+                display: block;
+            }
+        }
+
+        /* buttons */
+        .btn-primary {
+            background: #a55d35;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: 0.25s;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        .btn-primary:hover {
+            background: #7e4627;
+            transform: translateY(-2px);
+        }
+        .btn-outline {
+            border: 1.5px solid #a55d35;
+            background: transparent;
+            color: #a55d35;
+            padding: 10px 26px;
+            border-radius: 40px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.2s;
+            display: inline-block;
+        }
+        .btn-outline:hover {
+            background: #a55d35;
+            color: white;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(105deg, rgba(254,247,239,0.92), rgba(250,234,220,0.92)), url('https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center 30%;
+            padding: 100px 0 110px;
+            text-align: center;
+        }
+        .hero h2 {
+            font-size: 3.8rem;
+            font-weight: 700;
+            color: #2f221b;
+        }
+        .hero .tagline {
+            font-size: 1.3rem;
+            letter-spacing: 3px;
+            color: #a55d35;
+            margin-bottom: 16px;
+        }
+        section {
+            padding: 80px 0;
+        }
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 16px;
+            color: #2c2418;
+        }
+        .section-sub {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 56px auto;
+            color: #6b4e38;
+        }
+
+        /* VENUE CARDS (Our Presence Grid) */
+        .venue-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 20px;
+        }
+        .venue-card {
+            background: white;
+            border-radius: 32px;
+            overflow: hidden;
+            transition: all 0.35s ease;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+            border: 1px solid #f0e0d2;
+        }
+        .venue-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 40px rgba(0,0,0,0.1);
+        }
+        .venue-img {
+            height: 240px;
+            width: 100%;
+            object-fit: cover;
+            transition: 0.4s;
+        }
+        .venue-card-content {
+            padding: 24px 20px 28px;
+        }
+        .venue-name {
+            font-size: 1.7rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            color: #2c2418;
+        }
+        .venue-location {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #a55d35;
+            font-size: 0.85rem;
+            margin: 8px 0 12px;
+            font-weight: 500;
+        }
+        .venue-desc {
+            font-size: 0.9rem;
+            color: #4f3b2e;
+            margin: 12px 0 20px;
+            line-height: 1.4;
+        }
+        .btn-venue {
+            background: transparent;
+            border: 1.5px solid #a55d35;
+            color: #a55d35;
+            padding: 8px 18px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 0.85rem;
+        }
+        .btn-venue:hover {
+            background: #a55d35;
+            color: white;
+        }
+
+        /* MODAL STYLES */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.75);
+            backdrop-filter: blur(6px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0.2s, opacity 0.2s;
+        }
+        .modal-overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+        .modal-container {
+            background: #fffdf9;
+            max-width: 950px;
+            width: 90%;
+            max-height: 90vh;
+            border-radius: 36px;
+            overflow-y: auto;
+            box-shadow: 0 30px 50px rgba(0,0,0,0.3);
+            position: relative;
+            padding: 24px 28px 32px;
+            transform: scale(0.97);
+            transition: transform 0.25s ease;
+        }
+        .modal-overlay.active .modal-container {
+            transform: scale(1);
+        }
+        .modal-close {
+            position: absolute;
+            right: 24px;
+            top: 20px;
+            font-size: 28px;
+            cursor: pointer;
+            background: #f1e5da;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+            color: #5c3e2b;
+        }
+        .modal-close:hover {
+            background: #a55d35;
+            color: white;
+        }
+        .modal-title {
+            font-size: 2rem;
+            font-family: 'Cormorant Garamond', serif;
+            color: #a55d35;
+            margin-bottom: 6px;
+            padding-right: 40px;
+        }
+        .modal-address {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            color: #6b4e38;
+            margin-bottom: 24px;
+            font-size: 0.9rem;
+            border-bottom: 2px solid #eeddce;
+            padding-bottom: 12px;
+        }
+        .modal-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+        .modal-gallery img {
+            width: 100%;
+            height: 170px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.05);
+            transition: 0.2s;
+            border: 1px solid #f2e2d4;
+        }
+        .map-wrapper {
+            margin: 20px 0 12px;
+            border-radius: 28px;
+            overflow: hidden;
+            border: 1px solid #eadbcb;
+        }
+        .map-wrapper iframe {
+            width: 100%;
+            height: 320px;
+            border: 0;
+            display: block;
+        }
+        .venue-highlight {
+            background: #fff6ef;
+            padding: 12px 18px;
+            border-radius: 28px;
+            font-size: 0.9rem;
+            margin-top: 16px;
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .venue-highlight span {
+            background: white;
+            padding: 4px 14px;
+            border-radius: 30px;
+            color: #a55d35;
+            font-weight: 500;
+        }
+        @media (max-width: 680px) {
+            .modal-container { padding: 20px; }
+            .modal-gallery img { height: 130px; }
+            .map-wrapper iframe { height: 220px; }
+            .modal-title { font-size: 1.6rem; }
+        }
+
+        /* other existing sections */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 32px;
+        }
+        .card {
+            background: white;
+            border-radius: 24px;
+            padding: 28px 20px;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.04);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        .expertise-icon {
+            font-size: 2.4rem;
+            color: #a55d35;
+            margin-bottom: 16px;
+        }
+        .contact-row {
+            background: #2c2418;
+            color: #f7ede4;
+            border-radius: 48px;
+            padding: 48px 32px;
+            text-align: center;
+        }
+        footer {
+            background: #1e1712;
+            color: #cfbfae;
+            padding: 32px 0;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+        @media (max-width: 700px) {
+            .hero h2 { font-size: 2.3rem; }
+            .section-title { font-size: 2rem; }
+        }
+        .highlight {
+            color: #a55d35;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo-area">
+            <div class="logo-icon"><i class="fas fa-ring"></i></div>
+            <div class="logo-text">
+                <h1>Wedding Kalakar</h1>
+                <p>CREATE • CURATE • CELEBRATE</p>
+            </div>
+        </div>
+        <div class="menu-btn" id="menuToggle"><i class="fas fa-bars"></i></div>
+        <div class="nav-links" id="navLinks">
+            <a href="#home">Home</a>
+            <a href="#presence">Our Venues</a>
+            <a href="#services">Expertise</a>
+            <a href="#contact">Connect</a>
+        </div>
+    </div>
+</nav>
+
+<main>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="tagline">TIMELESS AFFAIRS</div>
+            <h2>Where Dreams Meet <br>the Konkan Coast</h2>
+            <p>India's most exclusive wedding experiences — handpicked venues, bespoke storytelling across Konkan & Goa.</p>
+            <a href="#presence" class="btn-primary" style="margin-top: 24px;"><i class="fas fa-location-dot"></i> Explore Venues</a>
+        </div>
+    </section>
+
+    <!-- ========= OUR PRESENCE: CLICKABLE VENUES (Konkan & Goa) ========= -->
+    <section id="presence">
+        <div class="container">
+            <h2 class="section-title">Our Presence <span class="highlight">✦ Konkan & Goa</span></h2>
+            <p class="section-sub">Serving Konkan's most scenic destinations & Goa — each venue handpicked for its grandeur & romance. Click to discover photo galleries, authentic Google Map locations, and exclusive details.</p>
+            <div class="venue-grid" id="venueGridContainer"></div>
+        </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title">Wedding Artistry</h2>
+            <div class="grid-3">
+                <div class="card"><i class="fas fa-camera-retro expertise-icon"></i><h3>Cinematic Story</h3><p>Capturing emotions through candid frames & trailer films.</p></div>
+                <div class="card"><i class="fas fa-chalkboard-user expertise-icon"></i><h3>Design & Decor</h3><p>Floral symphonies, thematic mandaps & luxury staging.</p></div>
+                <div class="card"><i class="fas fa-calendar-alt expertise-icon"></i><h3>End-to-end Planning</h3><p>Vendor coordination, guest management, flawless execution.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Connect Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="contact-row">
+                <h3 style="font-size: 1.8rem; margin-bottom: 12px;">Start your journey</h3>
+                <p style="margin-bottom: 20px;">Let’s design your dream celebration in one of our iconic venues</p>
+                <a href="#" class="btn-outline" style="background: white; color:#2c2418; border:none; padding:12px 36px;">✉ hello@weddingkalakar.com</a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <p>© 2025 Wedding Kalakar — Where love stories find their perfect address</p>
+        <p style="margin-top: 10px;"><i class="fas fa-map-pin"></i> Kankawli | Kudal | Vengurla | Malvan | Bhogva | Devbag | Devgad | Tarkarli | Goa</p>
+    </div>
+</footer>
+
+<!-- MODAL STRUCTURE (dynamic content) -->
+<div id="venueModal" class="modal-overlay">
+    <div class="modal-container">
+        <div class="modal-close" id="closeModalBtn"><i class="fas fa-times"></i></div>
+        <div id="modalDynamicContent">
+            <!-- filled via JS -->
+        </div>
+    </div>
+</div>
+
+<script>
+    // ========= VENUES DATA (Konkan & Goa Locations) =========
+    // Each venue includes: name, city/region, shortDesc, mainImage, galleryImages, mapQuery, highlight features
+    const venuesData = [
+        {
+            id: 1,
+            name: "Kankawli",
+            city: "Sindhudurg, Maharashtra",
+            shortDesc: "A serene town known for its lush greenery, tranquil backwaters, and pristine beaches — perfect for intimate coastal weddings.",
+            mainImage: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+            gallery: [
+                "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "https://images.unsplash.com/photo-1506953829328-11c7f69f1e0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "https://images.unsplash.com/photo-1519046904884-53103b34b206?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            ],
+            mapQuery: "Kankavli+Sindhudurg+Maharashtra",
+            features: ["Scenic Backwaters", "Beachside Venues", "Mountain Views", "Authentic Malvani Cuisine"]
+        },
+        {
+            id: 2,
+            name: "Kudal",
+            city: "Sindhudurg, Maharashtra",
+            shortDesc: "Famous for its Alphonso mangoes and cultural richness, Kudal offers heritage estates and riverside venues.",
+            mainImage: "https://images.unsplash.com/photo-1590523741831-ab7e2b8f3fec?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+            gallery: [
+                "https://images.unsplash.com/photo-1590523741831-ab7e2b8f3fec?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            ],
+            mapQuery: "Kudal+Sindhudurg+Maharashtra",
+            features: ["Heritage Estates", "Mango Orchards", "Riverside Venues", "Cultural Richness"]
+        },
+        {
+            id: 3,
+            name: "Vengurla",
+            city: "Sindhudurg, Maharashtra",
+            shortDesc: "Known for its pristine white sand beaches and historic lighthouse, Vengurla is a hidden gem for beach weddings.",
+            mainImage: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+            gallery: [
+                "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "https://images.unsplash.com/photo-1506953829328-11c7f69f1e0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "https://images.unsplash.com/photo-1519046904884-53103b34b206?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            ],
+            mapQuery: "Vengurla+Maharashtra",
+            features: ["White Sand Beaches", "Historic Lighthouse", "Secluded Coves", "Water Sports"]
+        },
+        {
+            id: 4,
+            name: "Malvan",
+            city: "Sindhudurg, Maharashtra",
+            shortDesc: "Home to the historic Sindhudurg Fort, Malvan offers a blend of culture, adventure, and stunning beachfront resorts.",
+            mainImage: "https://images.unsplash.com/photo-1519046904884-53103b34b206?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+            gallery: [
+                "https://images.unsplash.com/photo-1519046904884-53103b34b206?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "https://images.unsplash.com/photo-1506953829328-11c7f69f1e0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            ],
+            mapQuery: "Malvan+Maharashtra",
+            features: ["Sindhudurg Fort", "Water Sports", "Beachfront Resorts", "Malvani Seafood"]
+        },
+        {
+            id: 5,
+            name: "Bhogva",
+            city: "Near Vengurla, Maharashtra",
+            shortDesc: "A tranquil coastal village with silver sand beaches and crystal-clear waters — ideal for intimate, barefoot ceremonies.",
+            mainImage: "https://images.unsplash.com/photo-1506953829328-11c7f69f1e0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+            gallery: [
+                "https://images.unsplash.com/photo-1506953829328-11c7f69f1e0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "https://images.unsplash.com/photo-1519046904884-53103b34b206?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            ],
+            mapQuery: "Bhogwe+Beach+Vengurla",
+            features: ["Silver Sand Beach", "Backwater Lagoon", "Cliff-top Views", "Intimate Setting"]
+        },
+        {
+            id: 6,
+            name: "Devbag",
+            city: "Malvan, Maharashtra",
+            shortDesc: "Located at the confluence of the Karli River and the Arabian Sea, Devbag offers stunning sunset views and water sports.",
+            mainImage: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+            gallery: [
+                "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "https://images.unsplash.com/photo-1506953829328-11c7f69f1e0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "https://images.unsplash.com/photo-1519046904884-53103b34b206?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            ],
+            mapQuery: "Devbag+Malvan+Maharashtra",
+            features: ["River Confluence", "Sunset Views", "Water Sports", "Beachfront Resorts"]
+        },
+        {
+            id: 7,
+            name: "Devgad",
+            city: "Sindhudurg, Maharashtra",
+            shortDesc: "Famous for its Alphonso mangoes and pristine beaches, Devgad offers tranquil coastal venues surrounded by orchards.",
+            mainImage: "https://images.unsplash.com/photo-1590523741831-ab7e2b8f3fec?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+            gallery: [
+                "https://images.unsplash.com/photo-1590523741831-ab7e2b8f3fec?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "https://images.unsplash.com/photo-1506953829328-11c7f69f1e0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "https://images.unsplash.com/photo-1519046904884-53103b34b206?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            ],
+            mapQuery: "Devgad+Sindhudurg+Maharashtra",
+            features: ["Mango Orchards", "Pristine Beaches", "Coastal Tranquility", "Temple Visits"]
+        },
+        {
+            id: 8,
+            name: "Tarkarli",
+            city: "Malvan, Maharashtra",
+            shortDesc: "Renowned for its white sand beach and crystal-clear waters, Tarkarli is a top choice for water sports and beach weddings.",
+            mainImage: "https://images.unsplash.com/photo-1519046904884-53103b34b206?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+            gallery: [
+                "https://images.unsplash.com/photo-1519046904884-53103b34b206?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "https://images.unsplash.com/photo-1506953829328-11c7f69f1e0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            ],
+            mapQuery: "Tarkarli+Malvan+Maharashtra",
+            features: ["White Sand Beach", "Scuba Diving", "Water Sports", "Houseboat Stays"]
+        },
+        {
+            id: 9,
+            name: "Hidden Gems of Konkan",
+            city: "Various Locations",
+            shortDesc: "Discover untouched beaches, secret waterfalls, and private coves — perfect for exclusive, offbeat destination weddings.",
+            mainImage: "https://images.unsplash.com/photo-1506953829328-11c7f69f1e0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+            gallery: [
+                "https://images.unsplash.com/photo-1506953829328-11c7f69f1e0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "https://images.unsplash.com/photo-1519046904884-53103b34b206?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            ],
+            mapQuery: "Konkan+Maharashtra",
+            features: ["Secret Beaches", "Private Coves", "Waterfalls", "Exclusive Experiences"]
+        },
+        {
+            id: 10,
+            name: "Premium Goa",
+            city: "Goa",
+            shortDesc: "World-class beachfront resorts, vibrant nightlife, and Portuguese heritage — Goa remains the ultimate wedding destination.",
+            mainImage: "https://images.unsplash.com/photo-1519046904884-53103b34b206?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+            gallery: [
+                "https://images.unsplash.com/photo-1519046904884-53103b34b206?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "https://images.unsplash.com/photo-1506953829328-11c7f69f1e0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            ],
+            mapQuery: "Goa",
+            features: ["Beachfront Resorts", "Luxury Villas", "Portuguese Heritage", "Vibrant Nightlife"]
+        }
+    ];
+
+    // Render venue cards dynamically
+    function renderVenues() {
+        const grid = document.getElementById('venueGridContainer');
+        if (!grid) return;
+        grid.innerHTML = '';
+        venuesData.forEach(venue => {
+            const card = document.createElement('div');
+            card.className = 'venue-card';
+            card.innerHTML = `
+                <img class="venue-img" src="${venue.mainImage}" alt="${venue.name}" loading="lazy">
+                <div class="venue-card-content">
+                    <div class="venue-name">${venue.name}</div>
+                    <div class="venue-location"><i class="fas fa-map-marker-alt"></i> ${venue.city}</div>
+                    <div class="venue-desc">${venue.shortDesc.substring(0, 100)}${venue.shortDesc.length > 100 ? '…' : ''}</div>
+                    <button class="btn-venue" data-id="${venue.id}"><i class="fas fa-info-circle"></i> Explore Venue</button>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+
+        // attach event listeners to all venue buttons
+        document.querySelectorAll('.btn-venue').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const id = parseInt(btn.getAttribute('data-id'));
+                const venue = venuesData.find(v => v.id === id);
+                if (venue) openVenueModal(venue);
+            });
+        });
+    }
+
+    // Function to open modal with venue details (Google Map embed + gallery + info)
+    function openVenueModal(venue) {
+        const modalOverlay = document.getElementById('venueModal');
+        const modalContentDiv = document.getElementById('modalDynamicContent');
+        if (!modalOverlay || !modalContentDiv) return;
+
+        // Build google maps embed URL
+        const mapEmbedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(venue.mapQuery)}&z=12&output=embed`;
+        
+        // generate gallery images html
+        let galleryHtml = '';
+        venue.gallery.forEach(imgUrl => {
+            galleryHtml += `<img src="${imgUrl}" alt="${venue.name} view" loading="lazy">`;
+        });
+        
+        // generate feature pills
+        let featuresHtml = '';
+        venue.features.forEach(f => {
+            featuresHtml += `<span><i class="fas fa-check-circle"></i> ${f}</span>`;
+        });
+
+        const modalHtml = `
+            <div style="margin-bottom: 8px;">
+                <h3 class="modal-title">${venue.name}</h3>
+                <div class="modal-address">
+                    <i class="fas fa-location-dot" style="color:#a55d35;"></i> ${venue.city}
+                    <span style="margin-left: auto; font-size: 0.75rem;"><i class="fas fa-umbrella-beach"></i> Coastal Wedding</span>
+                </div>
+            </div>
+            <div class="modal-gallery">
+                ${galleryHtml}
+            </div>
+            <div class="map-wrapper">
+                <iframe src="${mapEmbedUrl}" title="Google Map location of ${venue.name}" loading="lazy" allowfullscreen=""></iframe>
+            </div>
+            <div class="venue-highlight">
+                ${featuresHtml}
+            </div>
+            <div style="margin-top: 20px; background:#fef5ed; padding:16px; border-radius: 24px;">
+                <p style="font-weight:500;"><i class="fas fa-quote-left"></i> Experience curated weddings at ${venue.name} — expert decor, catering, and coordination by Wedding Kalakar.</p>
+                <p style="margin-top: 12px;"><a href="#" class="btn-outline" style="font-size:0.8rem; padding:6px 18px;" id="inquiryFake"><i class="fas fa-heart"></i> Plan your event here</a></p>
+            </div>
+        `;
+        modalContentDiv.innerHTML = modalHtml;
+        modalOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+
+        // Inquiry button demo
+        const fakeInquiry = document.getElementById('inquiryFake');
+        if (fakeInquiry) {
+            fakeInquiry.addEventListener('click', (e) => {
+                e.preventDefault();
+                alert(`✨ Thank you for your interest in ${venue.name}! Our team will reach out with custom packages.`);
+            });
+        }
+    }
+
+    // Close modal logic
+    function closeModal() {
+        const modalOverlay = document.getElementById('venueModal');
+        if (modalOverlay) {
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
+
+    // event listeners for modal close
+    document.addEventListener('DOMContentLoaded', () => {
+        renderVenues();
+        const modalOverlay = document.getElementById('venueModal');
+        const closeBtn = document.getElementById('closeModalBtn');
+        if (closeBtn) closeBtn.addEventListener('click', closeModal);
+        if (modalOverlay) {
+            modalOverlay.addEventListener('click', (e) => {
+                if (e.target === modalOverlay) closeModal();
+            });
+        }
+        // escape key closes modal
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modalOverlay && modalOverlay.classList.contains('active')) {
+                closeModal();
+            }
+        });
+    });
+
+    // ========= MOBILE MENU & SMOOTH SCROLL =========
+    const menuBtn = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    if (menuBtn && navLinks) {
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    }
+    // smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === "#" || targetId === "") return;
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                e.preventDefault();
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+</script>
+</body>
+</html>
