@@ -55,12 +55,9 @@ h1, h2, h3, h4, .serif-heading {
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
-}
-.logo-icon img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    color: white;
+    font-size: 1.8rem;
+    box-shadow: 0 6px 12px rgba(165,93,53,0.2);
 }
 .logo-text h1 {
     font-size: 1.7rem;
@@ -154,31 +151,24 @@ h1, h2, h3, h4, .serif-heading {
     color: white;
 }
 
-/* ===== NEW HERO IMAGE & TEXT SECTION ===== */
-.hero-image-container {
+/* Hero section – pure background image, no text, reduced height */
+.hero {
+    background: url('wk.png') no-repeat center center/cover;
+    min-height: 80vh;
     width: 100%;
-    max-height: 80vh;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #fefaf5; /* fallback */
+    margin-bottom: 0;
+    padding-bottom: 0;
 }
-.hero-bg-image {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-    /* brighten the image using CSS filter */
-    filter: brightness(1.15) contrast(1.02);
-    transition: filter 0.3s ease;
-}
-.hero-text-section {
-    padding: 70px 0 60px;
+
+/* Text section directly below hero */
+.hero-text-below {
+    padding: 40px 0 80px;
     text-align: center;
     background: linear-gradient(135deg, #fffaf5 0%, #fef3ea 100%);
+    margin-top: 0;
 }
-.hero-text-section .tagline {
+
+.hero-text-below .tagline {
     font-size: 1.2rem;
     letter-spacing: 4px;
     color: #a55d35;
@@ -186,30 +176,20 @@ h1, h2, h3, h4, .serif-heading {
     font-weight: 500;
     text-transform: uppercase;
 }
-.hero-text-section h2 {
+
+.hero-text-below h2 {
     font-size: 3.8rem;
     font-weight: 700;
     color: #2c2418;
     margin-bottom: 20px;
     font-family: 'Cormorant Garamond', serif;
 }
-.hero-text-section p {
+
+.hero-text-below p {
     max-width: 700px;
     margin: 0 auto 32px;
     font-size: 1.1rem;
     color: #4f3b2e;
-}
-@media (max-width: 700px) {
-    .hero-text-section h2 {
-        font-size: 2.3rem;
-    }
-    .hero-text-section .tagline {
-        font-size: 0.9rem;
-        letter-spacing: 2px;
-    }
-    .hero-image-container {
-        max-height: 50vh;
-    }
 }
 
 /* section general */
@@ -300,29 +280,6 @@ section {
     padding: 24px;
     flex: 1;
 }
-.feature-list {
-    list-style: none;
-    margin-top: 16px;
-}
-.feature-list li {
-    margin-bottom: 10px;
-    font-size: 0.85rem;
-    display: flex;
-    gap: 8px;
-    align-items: baseline;
-}
-.feature-list i {
-    color: #b87c4f;
-    width: 20px;
-    font-size: 0.8rem;
-    margin-top: 3px;
-}
-hr {
-    margin: 20px 0;
-    border: 0;
-    height: 1px;
-    background: #eeddcf;
-}
 .premium-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -358,7 +315,7 @@ footer {
     text-align: center;
     font-size: 0.85rem;
 }
-/* photo gallery styles */
+/* gallery */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -388,16 +345,6 @@ footer {
     text-align: center;
     margin-top: 32px;
 }
-@media (max-width: 700px) {
-    .section-title { font-size: 2rem; }
-    .container { padding: 0 20px; }
-    .package-header { padding: 18px; }
-}
-.highlight {
-    color: #a55d35;
-    font-weight: 600;
-}
-
 /* Wedding Stories */
 .story-category {
     margin-bottom: 64px;
@@ -441,11 +388,6 @@ footer {
     text-align: center;
     border-top: 1px solid #f3e5d9;
 }
-@media (max-width: 700px) {
-    .story-heading {
-        font-size: 1.4rem;
-    }
-}
 .btn-explore-venues {
     display: inline-block;
     background: #a55d35;
@@ -464,4 +406,36 @@ footer {
 }
 .btn-explore-venues i {
     margin-right: 8px;
+}
+/* Responsive */
+@media (max-width: 768px) {
+    .hero {
+        min-height: 60vh;
+    }
+    .hero-text-below {
+        padding: 30px 0 60px;
+    }
+    .hero-text-below h2 {
+        font-size: 2.5rem;
+    }
+    .hero-text-below .tagline {
+        font-size: 0.9rem;
+        letter-spacing: 2px;
+    }
+    .hero-text-below p {
+        font-size: 1rem;
+        padding: 0 20px;
+    }
+    .section-title {
+        font-size: 2rem;
+    }
+    .container {
+        padding: 0 20px;
+    }
+    .package-header {
+        padding: 18px;
+    }
+    .story-heading {
+        font-size: 1.4rem;
+    }
 }
