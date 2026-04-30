@@ -12,7 +12,7 @@ body {
     scroll-behavior: smooth;
 }
 
-h1, h2, h3, h4, .serif-heading {
+h1, h2, h3, h4 {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 600;
     letter-spacing: -0.02em;
@@ -24,14 +24,13 @@ h1, h2, h3, h4, .serif-heading {
     padding: 0 24px;
 }
 
-/* header / nav */
+/* ========== NAVBAR ========== */
 .navbar {
     background: #fffcf8;
     box-shadow: 0 4px 20px rgba(0,0,0,0.02);
     position: sticky;
     top: 0;
     z-index: 100;
-    backdrop-filter: blur(2px);
     border-bottom: 1px solid #f0e4d4;
 }
 .nav-container {
@@ -57,13 +56,11 @@ h1, h2, h3, h4, .serif-heading {
     justify-content: center;
     color: white;
     font-size: 1.8rem;
-    box-shadow: 0 6px 12px rgba(165,93,53,0.2);
 }
 .logo-text h1 {
     font-size: 1.7rem;
     font-weight: 700;
     color: #a55d35;
-    letter-spacing: 1px;
     line-height: 1.2;
 }
 .logo-text p {
@@ -105,7 +102,6 @@ h1, h2, h3, h4, .serif-heading {
         align-items: flex-start;
         padding: 40px 32px;
         gap: 28px;
-        box-shadow: 5px 0 20px rgba(0,0,0,0.05);
         transition: 0.3s;
         border-right: 1px solid #f0e0d0;
         z-index: 99;
@@ -118,7 +114,40 @@ h1, h2, h3, h4, .serif-heading {
     }
 }
 
-/* buttons */
+/* ========== HERO (PURE BACKGROUND) ========== */
+.hero {
+    background: url('wk.png') no-repeat center center/cover;
+    min-height: 80vh;
+    width: 100%;
+}
+
+/* ========== TEXT SECTION BELOW HERO ========== */
+.hero-text-below {
+    padding: 40px 0 60px;
+    text-align: center;
+    background: linear-gradient(135deg, #fffaf5 0%, #fef3ea 100%);
+}
+.hero-text-below .tagline {
+    font-size: 1.2rem;
+    letter-spacing: 4px;
+    color: #a55d35;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+}
+.hero-text-below h2 {
+    font-size: 3.8rem;
+    font-weight: 700;
+    color: #2c2418;
+    margin-bottom: 20px;
+}
+.hero-text-below p {
+    max-width: 700px;
+    margin: 0 auto 32px;
+    font-size: 1.1rem;
+    color: #4f3b2e;
+}
+
+/* ========== BUTTONS ========== */
 .btn-primary {
     background: #a55d35;
     color: white;
@@ -130,69 +159,13 @@ h1, h2, h3, h4, .serif-heading {
     transition: 0.25s;
     border: none;
     cursor: pointer;
-    font-size: 0.9rem;
 }
 .btn-primary:hover {
     background: #7e4627;
     transform: translateY(-2px);
 }
-.btn-outline {
-    border: 1.5px solid #a55d35;
-    background: transparent;
-    color: #a55d35;
-    padding: 10px 26px;
-    border-radius: 40px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: 0.2s;
-}
-.btn-outline:hover {
-    background: #a55d35;
-    color: white;
-}
 
-/* Hero section – pure background image, no text, reduced height */
-.hero {
-    background: url('wk.png') no-repeat center center/cover;
-    min-height: 80vh;
-    width: 100%;
-    margin-bottom: 0;
-    padding-bottom: 0;
-}
-
-/* Text section directly below hero */
-.hero-text-below {
-    padding: 40px 0 80px;
-    text-align: center;
-    background: linear-gradient(135deg, #fffaf5 0%, #fef3ea 100%);
-    margin-top: 0;
-}
-
-.hero-text-below .tagline {
-    font-size: 1.2rem;
-    letter-spacing: 4px;
-    color: #a55d35;
-    margin-bottom: 16px;
-    font-weight: 500;
-    text-transform: uppercase;
-}
-
-.hero-text-below h2 {
-    font-size: 3.8rem;
-    font-weight: 700;
-    color: #2c2418;
-    margin-bottom: 20px;
-    font-family: 'Cormorant Garamond', serif;
-}
-
-.hero-text-below p {
-    max-width: 700px;
-    margin: 0 auto 32px;
-    font-size: 1.1rem;
-    color: #4f3b2e;
-}
-
-/* section general */
+/* ========== OTHER SECTIONS (condensed) ========== */
 section {
     padding: 80px 0;
 }
@@ -207,9 +180,8 @@ section {
     max-width: 700px;
     margin: 0 auto 56px auto;
     color: #6b4e38;
-    font-size: 1rem;
 }
-.grid-3, .grid-4, .grid-services {
+.grid-3, .grid-4 {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 32px;
@@ -219,12 +191,12 @@ section {
     border-radius: 24px;
     padding: 28px 20px;
     box-shadow: 0 12px 28px rgba(0,0,0,0.04);
-    transition: all 0.3s ease;
+    transition: 0.3s;
     border: 1px solid #f3e5d9;
+    text-align: center;
 }
 .card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 24px 40px rgba(0,0,0,0.08);
 }
 .expertise-icon {
     font-size: 2.4rem;
@@ -238,68 +210,44 @@ section {
     display: inline-block;
     margin: 6px;
     font-weight: 500;
-    font-size: 0.9rem;
 }
-/* package card specific */
 .package-card {
     background: white;
     border-radius: 32px;
     overflow: hidden;
-    box-shadow: 0 20px 35px -10px rgba(0,0,0,0.05);
-    transition: 0.25s;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
     border: 1px solid #eeddcf;
 }
 .package-header {
     background: #fdf5ed;
     padding: 24px 20px;
-    border-bottom: 2px solid #eed3c2;
 }
 .package-price {
     font-size: 1.9rem;
     font-weight: 800;
-    font-family: 'Cormorant Garamond', serif;
     color: #a55d35;
 }
 .package-title {
     font-size: 1.6rem;
     font-weight: 700;
-    margin: 8px 0 4px;
-}
-.package-best {
-    font-size: 0.8rem;
-    background: #fff0e5;
-    display: inline-block;
-    padding: 4px 12px;
-    border-radius: 30px;
-    font-weight: 600;
 }
 .package-body {
     padding: 24px;
-    flex: 1;
 }
 .premium-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 18px;
     margin: 40px 0;
 }
 .premium-item {
     background: #fff9f4;
-    padding: 14px 18px;
+    padding: 12px 18px;
     border-radius: 60px;
     font-weight: 500;
-    font-size: 0.85rem;
     display: flex;
     align-items: center;
     gap: 10px;
     border: 1px solid #f0dfd1;
-}
-.premium-item i {
-    color: #b87c4f;
-    width: 22px;
 }
 .contact-row {
     background: #2c2418;
@@ -313,45 +261,27 @@ footer {
     color: #cfbfae;
     padding: 32px 0;
     text-align: center;
-    font-size: 0.85rem;
 }
-/* gallery */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 24px;
-    margin-top: 40px;
 }
 .gallery-item {
     border-radius: 24px;
     overflow: hidden;
     height: 280px;
-    box-shadow: 0 12px 24px rgba(0,0,0,0.1);
-    transition: 0.3s;
 }
 .gallery-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: 0.4s;
 }
-.gallery-item:hover img {
-    transform: scale(1.03);
-}
-.photo-quote {
-    background: #fff5ea;
-    border-radius: 32px;
-    padding: 24px;
-    text-align: center;
-    margin-top: 32px;
-}
-/* Wedding Stories */
 .story-category {
     margin-bottom: 64px;
 }
 .story-heading {
     font-size: 1.8rem;
-    font-family: 'Cormorant Garamond', serif;
     color: #a55d35;
     margin-bottom: 24px;
     border-left: 5px solid #a55d35;
@@ -366,27 +296,16 @@ footer {
     border-radius: 24px;
     overflow: hidden;
     background: white;
-    box-shadow: 0 12px 24px rgba(0,0,0,0.05);
-    transition: 0.3s;
-}
-.story-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 30px rgba(0,0,0,0.1);
 }
 .story-card img {
     width: 100%;
     height: 220px;
     object-fit: cover;
-    display: block;
 }
 .story-caption {
     padding: 14px 16px;
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: #3e2a22;
     background: #fffbf5;
     text-align: center;
-    border-top: 1px solid #f3e5d9;
 }
 .btn-explore-venues {
     display: inline-block;
@@ -396,24 +315,22 @@ footer {
     border-radius: 40px;
     text-decoration: none;
     font-weight: 600;
-    transition: 0.25s;
-    font-size: 1rem;
-    box-shadow: 0 4px 12px rgba(165,93,53,0.2);
 }
-.btn-explore-venues:hover {
-    background: #7e4627;
-    transform: translateY(-2px);
+.photo-quote {
+    background: #fff5ea;
+    border-radius: 32px;
+    padding: 24px;
+    text-align: center;
+    margin-top: 32px;
 }
-.btn-explore-venues i {
-    margin-right: 8px;
-}
-/* Responsive */
+
+/* ========== MOBILE TWEAKS ========== */
 @media (max-width: 768px) {
     .hero {
         min-height: 60vh;
     }
     .hero-text-below {
-        padding: 30px 0 60px;
+        padding: 30px 0 50px;
     }
     .hero-text-below h2 {
         font-size: 2.5rem;
@@ -424,7 +341,7 @@ footer {
     }
     .hero-text-below p {
         font-size: 1rem;
-        padding: 0 20px;
+        padding: 0 16px;
     }
     .section-title {
         font-size: 2rem;
@@ -432,10 +349,10 @@ footer {
     .container {
         padding: 0 20px;
     }
-    .package-header {
-        padding: 18px;
-    }
     .story-heading {
         font-size: 1.4rem;
+    }
+    .premium-grid {
+        grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
     }
 }
